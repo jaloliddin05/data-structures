@@ -17,6 +17,14 @@ class DoubleLinkedList {
     }
   }
 
+  PrintBack() {
+    let cur = this.tail;
+    while (cur != null) {
+      console.log(cur.data);
+      cur = cur.prev;
+    }
+  }
+
   add(data) {
     let node = new Node(data);
     if (this.head == null) this.head = node;

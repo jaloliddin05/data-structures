@@ -50,6 +50,46 @@ class DoubleLinkedList {
     this.head = node;
     this.size++;
   }
+
+  duplicateN(data) {
+    let cur = this.head;
+    if (this.head) {
+      while (cur != null) {
+        if (cur.data == data) {
+          if (this.head != cur && cur.prev) {
+            let node = new Node(data);
+            cur.prev.next = node;
+            node.prev = cur.prev;
+            node.next = cur;
+            cur.prev = node;
+            if (cur == this.tail) {
+              this.tail = cur;
+            }
+            cur = cur.next;
+            this.size++;
+          } else {
+            let node = new Node(data);
+            if (this.head.next) {
+              node.prev = this.head;
+              node.next = this.head.next;
+              this.head.next.prev = node;
+              this.head.next = node;
+            } else {
+              node.prev = this.head;
+              this.head.next = node;
+            }
+            if (cur == this.tail) {
+              this.tail = node;
+            }
+            cur = node.next;
+            this.size++;
+          }
+        } else {
+          cur = cur.next;
+        }
+      }
+    }
+  }
 }
 
 export default DoubleLinkedList;

@@ -21,6 +21,14 @@ class DoubleLinkedList {
     this.tail = node;
     this.size++;
   }
+
+  print() {
+    let cur = this.head;
+    while (cur != null) {
+      console.log(cur.data);
+      cur = cur.next;
+    }
+  }
 }
 
 export default DoubleLinkedList;

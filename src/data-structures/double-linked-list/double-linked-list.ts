@@ -9,6 +9,14 @@ class DoubleLinkedList {
     this.size = 0;
   }
 
+  print() {
+    let cur = this.head;
+    while (cur != null) {
+      console.log(cur.data);
+      cur = cur.next;
+    }
+  }
+
   add(data) {
     let node = new Node(data);
     if (this.head == null) this.head = node;
@@ -22,12 +30,17 @@ class DoubleLinkedList {
     this.size++;
   }
 
-  print() {
-    let cur = this.head;
-    while (cur != null) {
-      console.log(cur.data);
-      cur = cur.next;
+  AddFirst(data) {
+    let node = new Node(data);
+    node.next = this.head;
+    if (this.size == 0) this.tail = node;
+    else {
+      if (this.head) {
+        this.head.prev = node;
+      }
     }
+    this.head = node;
+    this.size++;
   }
 }
 
